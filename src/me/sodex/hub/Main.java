@@ -14,35 +14,28 @@ public class Main extends JavaPlugin{
 		
 		getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		
-		if(!ConfigMessages.checkConfig()){
+		if(!ConfigMessages.checkConfig())
 			ConfigMessages.createConfig();
-		}
 		ConfigMessages.loadConfig();
 		ConfigMessages.filterConfig();
 		ConfigMessages.loadCompassPoints();
 		Bukkit.getServer().getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new CompassInfo(), this);
 		
-		if(ConfigMessages.NO_HEALTH_LOSS){
+		if(ConfigMessages.NO_HEALTH_LOSS)
 			Bukkit.getServer().getPluginManager().registerEvents(new NoHealth(), this);
-		}
 		
-		if(ConfigMessages.NO_HUNGER_LOSS){
+		if(ConfigMessages.NO_HUNGER_LOSS)
 			Bukkit.getServer().getPluginManager().registerEvents(new NoHunger(), this);
-		}
 		
 	}
 	
 	public void onDisable(){
-		
 		plugin = null;
-		
 	}
 	
 	public static Plugin getPlugin(){
-		
 		return plugin;
-		
 	}
 	
 }
